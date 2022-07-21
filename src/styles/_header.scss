@@ -1,0 +1,21 @@
+.header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    user-select: none;
+    &Background {
+        position: absolute;
+        // top: 0;
+        width: 100%;
+        height: 30%;
+        background: url("../../public/assets/images/global-nav-bg.png");
+        background-size: 2px;
+    }
+    &Logo {
+        position: relative;
+        width: 50%;
+        min-width: 300px;
+    }
+}

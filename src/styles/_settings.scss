@@ -1,0 +1,23 @@
+
+$colorBack: black;
+$colorGreen: #8FBF20;
+$colorGray: #D0D2CB;
+
+
+body {
+    padding: 0;
+    margin: 0;
+    max-width: 100vw;
+    max-height: 100vh;
+    color: $colorGray;
+}
+
+
+.page {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+    background-color: $colorBack;
+}
