@@ -6,6 +6,8 @@ const Navigation = () => {
         e.preventDefault();
         localStorage.removeItem("loggedWZ");
         localStorage.removeItem("dataProfil");
+        localStorage.removeItem("dataMatches");
+        localStorage.removeItem("dataSummary");
         window.location.href = "/";
     }
 
@@ -14,9 +16,6 @@ const Navigation = () => {
             <ul className='navigationList'>
                 <NavLink to="/" className={(nav) => (nav.isActive ? "nav-active" : "")}>
                     <li className='navigationListLink'>Profil</li>
-                </NavLink>
-                <NavLink to="/matches" className={(nav) => (nav.isActive ? "nav-active" : "")}>
-                    <li className='navigationListLink'>Matches</li>
                 </NavLink>
                 <NavLink to="/stats" className={(nav) => (nav.isActive ? "nav-active" : "")}>
                     <li className='navigationListLink'>Stats</li>
