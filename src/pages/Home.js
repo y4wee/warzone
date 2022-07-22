@@ -3,16 +3,23 @@ import axios from "axios";
 import Navigation from '../components/Navigation';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import Profil from '../components/Profil';
 
 const Home = () => {
     const [gamertag, setGamertag] = useState("");
     const [platform, setPlatform] = useState("battle");
     const [loggedIn, setLoggedIn] = useState(false);
+    const [profil, setProfil] = useState([]);
 
     useEffect(() => {
         let logged = JSON.parse(window.localStorage.getItem('loggedWZ'));
-        if(logged === true) {
-            setLoggedIn(logged)
+        let dataProfil = JSON.parse(window.localStorage.getItem('dataProfil'));
+
+        if(logged !== null) {
+            setLoggedIn(logged);
+        }
+        if(dataProfil !== null) {
+            setProfil(dataProfil);
         }
     }, []);
 
@@ -20,18 +27,18 @@ const Home = () => {
     // event entré de l'input gamertag
     const inputChange = (e) => {
         e.preventDefault();
-        let value = e.target.value
+        let value = e.target.value;
         if(value.includes("#")) {
             setGamertag(value.split("#").join("%2523"));
         } else {
-            setGamertag(value)
+            setGamertag(value);
         }
         console.log(gamertag);
     }
     // event selection platform
     const selectChange = (e) => {
         e.preventDefault();
-        setPlatform(e.target.value)
+        setPlatform(e.target.value);
     }
     // event requete axios avec button
     const searchButton = (e) => {
@@ -49,8 +56,10 @@ const Home = () => {
         axios.request(options)
         .then((res) => {
           if(res.status === 200) {
-            setLoggedIn(true)
-            localStorage.setItem("loggedWZ", JSON.stringify(true))
+            setLoggedIn(true);
+            setProfil(res.data.br);
+            localStorage.setItem("dataProfil", JSON.stringify(res.data.br));
+            localStorage.setItem("loggedWZ", JSON.stringify(true));
           }
         }).catch((err) => {
           console.error(err);
@@ -88,7 +97,7 @@ const Home = () => {
                 <Header />
                 <Navigation />
     
-                welcome to your profil !!
+                <Profil data={profil}/>
     
                 <Footer />
             </div>

@@ -5,6 +5,7 @@ const Navigation = () => {
     const logoutOnClick = (e) => {
         e.preventDefault();
         localStorage.removeItem("loggedWZ");
+        localStorage.removeItem("dataProfil");
         window.location.href = "/";
     }
 
@@ -12,9 +13,6 @@ const Navigation = () => {
         <div className="navigation">
             <ul className='navigationList'>
                 <NavLink to="/" className={(nav) => (nav.isActive ? "nav-active" : "")}>
-                    <li className='navigationListLink'>Accueil</li>
-                </NavLink>
-                <NavLink to="/profil" className={(nav) => (nav.isActive ? "nav-active" : "")}>
                     <li className='navigationListLink'>Profil</li>
                 </NavLink>
                 <NavLink to="/matches" className={(nav) => (nav.isActive ? "nav-active" : "")}>
