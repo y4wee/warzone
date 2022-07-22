@@ -2,6 +2,12 @@ import React from 'react';
 import { NavLink } from "react-router-dom"
 
 const Navigation = () => {
+    const logoutOnClick = (e) => {
+        e.preventDefault();
+        localStorage.removeItem("loggedWZ");
+        window.location.href = "/";
+    }
+
     return (
         <div className="navigation">
             <ul className='navigationList'>
@@ -17,7 +23,7 @@ const Navigation = () => {
                 <NavLink to="/stats" className={(nav) => (nav.isActive ? "nav-active" : "")}>
                     <li className='navigationListLink'>Stats</li>
                 </NavLink>
-                <li className="navigationButton">
+                <li className="navigationButton" onClick={logoutOnClick}>
                     Logout
                 </li>
             </ul>
