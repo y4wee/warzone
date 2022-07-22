@@ -4,19 +4,22 @@ import { NavLink } from "react-router-dom"
 const Navigation = () => {
     return (
         <div className="navigation">
-            <ul>
+            <ul className='navigationList'>
                 <NavLink to="/" className={(nav) => (nav.isActive ? "nav-active" : "")}>
-                    <li>Accueil</li>
+                    <li className='navigationListLink'>Accueil</li>
                 </NavLink>
                 <NavLink to="/profil" className={(nav) => (nav.isActive ? "nav-active" : "")}>
-                    <li>Profil</li>
+                    <li className='navigationListLink'>Profil</li>
                 </NavLink>
-                <NavLink to="/matches">
-                    <li>Matches</li>
+                <NavLink to="/matches" className={(nav) => (nav.isActive ? "nav-active" : "")}>
+                    <li className='navigationListLink'>Matches</li>
                 </NavLink>
-                <NavLink to="/stats">
-                    <li>Stats</li>
+                <NavLink to="/stats" className={(nav) => (nav.isActive ? "nav-active" : "")}>
+                    <li className='navigationListLink'>Stats</li>
                 </NavLink>
+                <li className="navigationButton">
+                    Logout
+                </li>
             </ul>
         </div>
     );
