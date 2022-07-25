@@ -54,3 +54,39 @@
         }
     }
 }
+
+.matches {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    user-select: none;
+    margin-bottom: 100px;
+    &Card {
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+        margin: 10px;
+        background-color: $colorGray;
+        color: $colorBack;
+        font-weight: bold;
+        animation: fadeCard 0.5s both;
+        &Detail {
+            margin: 5px;
+        }
+    }
+    &Mode {
+        display: flex;
+        justify-content: center;
+        // border-bottom: solid 2px $colorOrange;
+        text-decoration: underline 2px $colorOrange;
+        margin-bottom: 0;
+    }
+    &Placement {
+        display: flex;
+        justify-content: center;
+        color: $colorOrange;
+        margin-bottom: 10px;
+    }
+}
