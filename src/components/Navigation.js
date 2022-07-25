@@ -15,10 +15,10 @@ const Navigation = () => {
         <div className="navigation">
             <ul className='navigationList'>
                 <NavLink to="/" className={(nav) => (nav.isActive ? "nav-active" : "")}>
-                    <li className='navigationListLink'>Profil</li>
+                    <li className='navigationListLink'>BattleRoyal</li>
                 </NavLink>
-                <NavLink to="/stats" className={(nav) => (nav.isActive ? "nav-active" : "")}>
-                    <li className='navigationListLink'>Stats</li>
+                <NavLink to="/rebirth" className={(nav) => (nav.isActive ? "nav-active" : "")}>
+                    <li className='navigationListLink'>Rebirth</li>
                 </NavLink>
                 <li className="navigationButton" onClick={logoutOnClick}>
                     Logout
