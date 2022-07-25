@@ -2,6 +2,7 @@
 $colorBack: black;
 $colorGreen: #8FBF20;
 $colorGray: #D0D2CB;
+$colorOrange: rgb(221, 107, 13);
 
 
 body {
@@ -22,7 +23,7 @@ body {
     width: 100%;
     min-height: 100vh;
     background-color: $colorBack;
-    padding-bottom: 100px;
+    margin-bottom: 100px;
 }
 
 li {
