@@ -29,6 +29,37 @@
         color: $colorBack;
         background-color: $colorGreen;
         cursor: pointer;
+        user-select: none;
     }
 }
 
+.profil {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    user-select: none;
+    margin-bottom: 100px;
+    &Stat {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 250px;
+        height: 125px;
+        margin: 10px;
+        background-color: $colorGray;
+        color: $colorBack;
+        font-weight: bold;
+        animation: fadeCard 0.5s both;
+        &Name {
+            margin: 5px;
+            border-bottom: solid 2px $colorOrange;
+        }
+        &Value {
+            margin: 5px;
+            color: $colorOrange;
+        }
+    }
+}

@@ -4,6 +4,17 @@ $colorGreen: #8FBF20;
 $colorGray: #D0D2CB;
 $colorOrange: rgb(221, 107, 13);
 
+@keyframes fadeCard {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 
 body {
     padding: 0;
