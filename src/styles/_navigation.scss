@@ -1,0 +1,51 @@
+.navigation {
+    user-select: none;
+    width: 100%;
+    &List {
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        margin: 0;
+        & a {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            transition: all 0.2s ease-in-out;
+            margin-right: 15px;
+            &::after {
+                content: "";
+                position: absolute;
+                bottom: -2px;
+                width: 100%;
+                border: solid 1px rgb(221, 107, 13);
+                border-radius: 20px;
+                transform-origin: left;
+                transform: scale(0);
+                transition: all 0.2s ease-in-out;
+            }
+            &.nav-active {
+                color: rgb(221, 107, 13);
+                transition: all 0.2s ease-in-out;
+                &::after {
+                    transform-origin: left;
+                    transform: scale(1);
+                    transition: all 0.2s ease-in-out;
+                }
+            }
+        }
+    }
+    &Button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 15px;
+        padding: 0 10px;
+        border-radius: 30px;
+        color: black;
+        background-color: $colorGreen;
+        cursor: pointer;
+    }
+}
