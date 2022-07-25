@@ -13,6 +13,7 @@ body {
     color: $colorGray;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.2rem;
+    background-color: $colorBack;
 }
 
 
@@ -22,8 +23,6 @@ body {
     flex-direction: column;
     width: 100%;
     min-height: 100vh;
-    background-color: $colorBack;
-    margin-bottom: 100px;
 }
 
 li {

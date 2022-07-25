@@ -93,9 +93,11 @@ const Home = () => {
                             required
                             minLength="2"
                             onBlur={inputChange}
+                            placeholder="Enter your Gamertag"
                         ></input>
                         <select
                             name="platform"
+                            className="homeSearchSelect"
                             id="platform-select"
                             onChange={(e) => setPlatform(e.target.value)}
                         >
@@ -108,7 +110,7 @@ const Home = () => {
                     </div>
 
                     <div className="homeSearchButton" onClick={searchButton}>
-                        Search
+                        Loggin
                     </div>
                 </div>
 
