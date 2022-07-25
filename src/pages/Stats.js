@@ -10,6 +10,8 @@ const Stats = () => {
     const [matches, setMatches] = useState([]);
     const [summary, setSummary] = useState([]);
     const [summaryOn, setSummaryOn] = useState(true);
+    const [summaryClass, setSummaryClass] = useState("categorieActive");
+    const [matchesClass, setMatchesClass] = useState("");
 
     useEffect(() => {
         let matchesData = JSON.parse(
@@ -54,6 +56,20 @@ const Stats = () => {
         }
     }, []);
 
+    const clickCategorie = (e) => {
+        e.preventDefault();
+        if(e.target.dataset.name === "summary") {
+            setMatchesClass("")
+            setSummaryClass("categorieActive")
+            setSummaryOn(true)
+        }
+        else if(e.target.dataset.name === "matches") {
+            setSummaryClass("")
+            setMatchesClass("categorieActive")
+            setSummaryOn(false)
+        }
+    }
+
     let viewBox;
     if (summaryOn) {
         viewBox = <Summary data={summary} />;
@@ -67,14 +83,16 @@ const Stats = () => {
             <Navigation />
             <ul className="categorie">
                 <li
-                    className="categorieChosen"
-                    onClick={(e) => setSummaryOn(true)}
+                    data-name="summary"
+                    className={"categorieChosen " + summaryClass}
+                    onClick={clickCategorie}
                 >
                     Summary
                 </li>
                 <li
-                    className="categorieChosen"
-                    onClick={(e) => setSummaryOn(false)}
+                    data-name="matches"
+                    className={"categorieChosen " + matchesClass}
+                    onClick={clickCategorie}
                 >
                     Matches
                 </li>
