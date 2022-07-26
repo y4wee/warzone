@@ -10,6 +10,7 @@ const Home = () => {
     const [platform, setPlatform] = useState("battle");
     const [loggedIn, setLoggedIn] = useState(false);
     const [profil, setProfil] = useState([]);
+    const [error, setError] = useState("");
 
     useEffect(() => {
         let logged = JSON.parse(window.localStorage.getItem("loggedWZ"));
@@ -51,7 +52,8 @@ const Home = () => {
         axios
             .request(options)
             .then((res) => {
-                if (res.status === 200) {
+                if (res.status === 200 && !res.data.error) {
+                    console.log(res);
                     setLoggedIn(true);
                     setProfil(res.data.br);
                     localStorage.setItem(
@@ -59,6 +61,9 @@ const Home = () => {
                         JSON.stringify(res.data.br)
                     );
                     localStorage.setItem("loggedWZ", JSON.stringify(true));
+                } else {
+                    console.log(res)
+                    setError(res.data.message)
                 }
             })
             .catch((err) => {
@@ -66,58 +71,61 @@ const Home = () => {
             });
     };
 
-    if (loggedIn) {
-        return (
-            <div className="page">
-                <div className="page">
-                    <Header />
-                    <Navigation />
-
-                    <Profil data={profil} />
-
-                    <Footer />
+    let viewHome;
+    if (!loggedIn) {
+        viewHome = (
+            <div className="homeSearch">
+                <div className="homeSearchEntries">
+                    <input
+                        className="homeSearchInput"
+                        type="text"
+                        name="gamertag"
+                        required
+                        minLength="2"
+                        onBlur={inputChange}
+                        placeholder="Enter your Gamertag"
+                    ></input>
+                    <select
+                        name="platform"
+                        className="homeSearchSelect"
+                        id="platform-select"
+                        onChange={(e) => setPlatform(e.target.value)}
+                    >
+                        <option value="battle">BattleNET</option>
+                        <option value="steam">Steam</option>
+                        <option value="acti">ActivisionID</option>
+                        <option value="psn">PSN</option>
+                        <option value="xbl">XBOX</option>
+                    </select>
                 </div>
+
+                <div className="homeSearchButton" onClick={searchButton}>
+                    Loggin
+                </div>
+
+                <p className="homeSearchError">{error}</p>
             </div>
         );
     } else {
-        return (
-            <div className="page">
-                <Header />
-
-                <div className="homeSearch">
-                    <div className="homeSearchEntries">
-                        <input
-                            className="homeSearchInput"
-                            type="text"
-                            name="gamertag"
-                            required
-                            minLength="2"
-                            onBlur={inputChange}
-                            placeholder="Enter your Gamertag"
-                        ></input>
-                        <select
-                            name="platform"
-                            className="homeSearchSelect"
-                            id="platform-select"
-                            onChange={(e) => setPlatform(e.target.value)}
-                        >
-                            <option value="battle">BattleNET</option>
-                            <option value="steam">Steam</option>
-                            <option value="acti">ActivisionID</option>
-                            <option value="psn">PSN</option>
-                            <option value="xbl">XBOX</option>
-                        </select>
-                    </div>
-
-                    <div className="homeSearchButton" onClick={searchButton}>
-                        Loggin
-                    </div>
-                </div>
-
-                <Footer />
+        viewHome = (
+            <div>
+                <Navigation />
+                <Profil data={profil} />
             </div>
         );
     }
+
+    return (
+        <div className="page">
+            <div className="page">
+                <Header />
+
+                {viewHome}
+
+                <Footer />
+            </div>
+        </div>
+    );
 };
 
 export default Home;
